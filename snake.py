@@ -9,7 +9,7 @@ WEST = 180
 class Snake:
 
     def __init__(self):
-        self.snake = []
+        self.snake = [] #eventually becomes a list of Turtles
         self.create_snake()
         self.head = self.snake[0]
 
@@ -23,14 +23,14 @@ class Snake:
         new_segment.color("white")
         new_segment.shape("square")
         new_segment.setpos(position)
-        self.snake.append(new_segment)
+        self.snake.append(new_segment) #appends Turtles into the list self.snake
 
     def move(self):
-        for seg_num in range(len(self.snake) - 1, 0, -1):
+        for seg_num in range(len(self.snake) - 1, 0, -1): #start is larger than stop in range(), making the for loop iterate in descending order
             new_x = self.snake[seg_num - 1].xcor()
             new_y = self.snake[seg_num - 1].ycor()
             self.snake[seg_num].goto(x=new_x, y=new_y)
-        self.head.forward(MOVE_DISTANCE)
+        self.head.forward(MOVE_DISTANCE) #moves the head segment forward by MOVE_DISTANCE
 
     def extend(self):
         self.add_segment(self.snake[-1].position())
